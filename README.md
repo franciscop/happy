@@ -7,7 +7,7 @@ npm install gitrash -g
 grr
 ```
 
-![](./log.png)
+![](./img/log.png)
 
 This could easily be confused with "git trash", but since my lifehood depends on being employed I would never make that statement.
 
