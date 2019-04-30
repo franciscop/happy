@@ -20,27 +20,34 @@ const atocha = (command, buffer = 10) => {
   );
 };
 
-console.log("Running...");
+(async () => {
+  await atocha(`git add . -A`);
+  await atocha(`git commit -m "Commited on ${time()}"`);
+  await atocha(`git pull origin master`);
+  await atocha(`git push`);
+})();
 
-const tasks = new listr([
-  {
-    title: "Adding",
-    task: async () => await atocha(`git add . -A`)
-  },
-  {
-    title: "Commiting",
-    task: async () => await atocha(`git commit -m "Commited on ${time()}"`)
-  },
-  {
-    title: "Pulling from master",
-    task: async () => await atocha(`git pull origin master`)
-  },
-  {
-    title: "Pushing",
-    task: async () => await atocha(`git push`)
-  }
-]);
-
-tasks.run().catch(err => {
-  console.error("ERROR:", err);
-});
+// console.log("Running...");
+//
+// const tasks = new listr([
+//   {
+//     title: "Adding",
+//     task: async () => await atocha(`git add . -A`)
+//   },
+//   {
+//     title: "Commiting",
+//     task: async () => await atocha(`git commit -m "Commited on ${time()}"`)
+//   },
+//   {
+//     title: "Pulling from master",
+//     task: async () => await atocha(`git pull origin master`)
+//   },
+//   {
+//     title: "Pushing",
+//     task: async () => await atocha(`git push`)
+//   }
+// ]);
+//
+// tasks.run().catch(err => {
+//   console.error("ERROR:", err);
+// });
