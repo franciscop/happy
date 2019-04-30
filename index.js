@@ -16,11 +16,11 @@ const wtf = err => {
 
 const tasks = new listr([
   {
-    title: "Adding",
+    title: "Adding files",
     task: async () => await atocha(`git add . -A`)
   },
   {
-    title: "Commiting",
+    title: "Committing changes",
     task: async () =>
       await atocha(`git commit -m "Saved on ${time()}" || echo "Already saved"`)
   },
