@@ -1,7 +1,11 @@
+#!/usr/bin/env node
+
 const atocha = require("atocha");
 const listr = require("listr");
 
 const time = () => new Date().toISOString();
+
+console.log("Running...");
 
 const tasks = new listr([
   {
