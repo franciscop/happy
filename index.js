@@ -45,8 +45,13 @@ const tasks = new listr([
   },
   {
     title: "Commiting",
-    task: async () =>
-      await atocha(`git commit -m "Saved on  ${time()}"`).catch(wtf)
+    task: async () => {
+      try {
+        await atocha(`git commit -m "Saved on  ${time()}"`);
+      } catch (err) {
+        console.log(err);
+      }
+    }
   },
   {
     title: "Pushing",
