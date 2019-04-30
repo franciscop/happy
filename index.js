@@ -47,14 +47,15 @@ const tasks = new listr([
     task: async () => await atocha(`git commit -m "Commited on ${time()}"`)
   },
   {
-    title: "Pulling from master",
-    task: async () => await atocha(`git pull origin master`).catch(ridiculous)
-  },
-  {
     title: "Pushing",
     task: async () => await atocha(`git push`).catch(ridiculous)
+  },
+  {
+    title: "Pulling from master",
+    task: async () => await atocha(`git pull origin master`).catch(ridiculous)
   }
 ]);
+
 tasks.run().catch(err => {
   console.error("ERROR:", err);
 });
