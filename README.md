@@ -1,6 +1,6 @@
 # gitrash
 
-Just push everything. This could easily be confused with "git trash", but I as I depend on being employed I would never make that statement :smile:
+Just push everything. This could easily be confused with "git trash", but since my lifehood depends on being employed I would never make that statement. Try it with:
 
 ```
 npx gitrash
