@@ -1,17 +1,15 @@
 # gitrash
 
-Just push everything. This could easily be confused with "git trash", but since my lifehood depends on being employed I would never make that statement. Try it with:
-
-```
-npx gitrash
-```
-
-Or, since you are gonna love it:
+Just push everything. Install it and use it:
 
 ```
 npm install gitrash -g
 grr
 ```
+
+![](./log.png)
+
+This could easily be confused with "git trash", but since my lifehood depends on being employed I would never make that statement.
 
 Basically, does these:
 
