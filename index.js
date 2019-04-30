@@ -13,45 +13,31 @@ const atocha = (command, buffer = 10) => {
   const maxBuffer = buffer * 1024 * 1024;
   return swear(
     exec(command, { maxBuffer }).then(out => {
-      console.log(out);
       if (out.stderr) throw new Error(out.stderr);
       return out.stdout.trim();
     })
   );
 };
 
-(async () => {
-  try {
-    await atocha(`git add . -A`);
-    await atocha(`git commit -m "Commited on ${time()}"`);
-    await atocha(`git pull origin master`);
-    await atocha(`git push`);
-  } catch (error) {
-    console.log("AAA:", error);
+const tasks = new listr([
+  {
+    title: "Adding",
+    task: async () => await atocha(`git add . -A`)
+  },
+  {
+    title: "Commiting",
+    task: async () => await atocha(`git commit -m "Commited on ${time()}"`)
+  },
+  {
+    title: "Pulling from master",
+    task: async () => await atocha(`git pull origin master && echo "DONE"`)
+  },
+  {
+    title: "Pushing",
+    task: async () => await atocha(`git push`)
   }
-})();
+]);
 
-// console.log("Running...");
-//
-// const tasks = new listr([
-//   {
-//     title: "Adding",
-//     task: async () => await atocha(`git add . -A`)
-//   },
-//   {
-//     title: "Commiting",
-//     task: async () => await atocha(`git commit -m "Commited on ${time()}"`)
-//   },
-//   {
-//     title: "Pulling from master",
-//     task: async () => await atocha(`git pull origin master`)
-//   },
-//   {
-//     title: "Pushing",
-//     task: async () => await atocha(`git push`)
-//   }
-// ]);
-//
-// tasks.run().catch(err => {
-//   console.error("ERROR:", err);
-// });
+tasks.run().catch(err => {
+  console.error("ERROR:", err);
+});
