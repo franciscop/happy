@@ -49,7 +49,7 @@ const tasks = new listr([
       try {
         await atocha(`git commit -m "Saved on  ${time()}"`);
       } catch (err) {
-        console.log(err);
+        console.log("xxxx", err);
       }
     }
   },
