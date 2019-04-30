@@ -32,6 +32,7 @@ const atocha = (command, buffer = 10) => {
 })();
 
 const ridiculous = err => {
+  if (/nothing to commit, working tree clean/.test(err.message)) return;
   if (/branch\s+master\s+-> FETCH_HEAD/.test(err.message)) return;
   if (/master -> master/.test(err.message)) return;
   throw err;
