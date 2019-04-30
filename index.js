@@ -27,6 +27,5 @@ const tasks = new listr([
 ]);
 
 tasks.run().catch(err => {
-  console.log(err.message);
-  console.log(err);
+  console.error("ERROR:", err);
 });
