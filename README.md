@@ -1,0 +1,2 @@
+# gitrash
+Just push everything
