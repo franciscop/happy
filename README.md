@@ -10,7 +10,7 @@ Or, since you are gonna love it:
 
 ```
 npm install gitrash -g
-gr
+grr
 ```
 
 Basically, does these:
