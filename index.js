@@ -31,6 +31,12 @@ const atocha = (command, buffer = 10) => {
   }
 })();
 
+const ridiculous = err => {
+  if (/branch\s+master\s+-> FETCH_HEAD/.test(err.message)) return;
+  if (/master -> master/.test(err.message)) return;
+  throw err;
+};
+
 const tasks = new listr([
   {
     title: "Adding",
@@ -42,16 +48,11 @@ const tasks = new listr([
   },
   {
     title: "Pulling from master",
-    task: async () =>
-      await atocha(`git pull origin master`).catch(err => {
-        // Accept this "error"
-        if (/\* branch\s+master\s+-> FETCH_HEAD/.test(err.message)) return;
-        throw err;
-      })
+    task: async () => await atocha(`git pull origin master`).catch(ridiculous)
   },
   {
     title: "Pushing",
-    task: async () => await atocha(`git push`)
+    task: async () => await atocha(`git push`).catch(ridiculous)
   }
 ]);
 
