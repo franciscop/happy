@@ -3,7 +3,7 @@
 const atocha = require("atocha");
 const listr = require("listr");
 
-const time = () => new Date().toISOString();
+const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
 
 // Accept these errors
 const wtf = err => {
