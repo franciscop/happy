@@ -30,7 +30,7 @@ const tasks = new listr([
   },
   {
     title: "Pulling from master",
-    task: async () => await atocha(`git pull origin master && echo "DONE"`)
+    task: async () => await atocha(`git pull origin master`).catch(() => {})
   },
   {
     title: "Pushing",
