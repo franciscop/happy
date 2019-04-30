@@ -21,10 +21,14 @@ const atocha = (command, buffer = 10) => {
 };
 
 (async () => {
-  await atocha(`git add . -A`);
-  await atocha(`git commit -m "Commited on ${time()}"`);
-  await atocha(`git pull origin master`);
-  await atocha(`git push`);
+  try {
+    await atocha(`git add . -A`);
+    await atocha(`git commit -m "Commited on ${time()}"`);
+    await atocha(`git pull origin master`);
+    await atocha(`git push`);
+  } catch (error) {
+    console.log(error);
+  }
 })();
 
 // console.log("Running...");
