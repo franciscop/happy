@@ -31,7 +31,7 @@ const atocha = (command, buffer = 10) => {
   }
 })();
 
-const ridiculous = err => {
+const wtf = err => {
   if (/nothing to commit, working tree clean/.test(err.message)) return;
   if (/branch\s+master\s+-> FETCH_HEAD/.test(err.message)) return;
   if (/master -> master/.test(err.message)) return;
@@ -46,15 +46,15 @@ const tasks = new listr([
   {
     title: "Commiting",
     task: async () =>
-      await atocha(`git commit -m "Commited on ${time()}"`).catch(ridiculous)
+      await atocha(`git commit -m "Saved on  ${time()}"`).catch(wtf)
   },
   {
     title: "Pushing",
-    task: async () => await atocha(`git push`).catch(ridiculous)
+    task: async () => await atocha(`git push`).catch(wtf)
   },
   {
     title: "Pulling from master",
-    task: async () => await atocha(`git pull origin master`).catch(ridiculous)
+    task: async () => await atocha(`git pull origin master`).catch(wtf)
   }
 ]);
 
