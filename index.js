@@ -13,7 +13,7 @@ const atocha = (command, buffer = 10) => {
   const maxBuffer = buffer * 1024 * 1024;
   return swear(
     exec(command, { maxBuffer }).then(out => {
-      console.error(`ERROR:"${out.stderr}"`);
+      console.log(out);
       if (out.stderr) throw new Error(out.stderr);
       return out.stdout.trim();
     })
