@@ -33,7 +33,7 @@ const tasks = new listr([
     task: async () =>
       await atocha(`git pull origin master`).catch(err => {
         // Accept this "error"
-        if (/up to date/.test(err.message)) return;
+        if (/Already up to date/.test(err.message)) return;
         throw err;
       })
   },
