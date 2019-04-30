@@ -27,7 +27,7 @@ const atocha = (command, buffer = 10) => {
     await atocha(`git pull origin master`);
     await atocha(`git push`);
   } catch (error) {
-    console.log(error);
+    console.log("AAA:", error);
   }
 })();
 
