@@ -1,9 +1,23 @@
 #!/usr/bin/env node
 
-const atocha = require("atocha");
+// const atocha = require("atocha");
 const listr = require("listr");
 
 const time = () => new Date().toISOString();
+
+const swear = require("swear");
+const { promisify } = require("util");
+const exec = promisify(require("child_process").exec);
+
+const atocha = (command, buffer = 10) => {
+  const maxBuffer = buffer * 1024 * 1024;
+  return swear(
+    exec(command, { maxBuffer }).then(out => {
+      if (out.stderr) throw new Error(out.stderr);
+      return out.stdout.trim();
+    })
+  );
+};
 
 console.log("Running...");
 
