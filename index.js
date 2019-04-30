@@ -55,7 +55,6 @@ const tasks = new listr([
     task: async () => await atocha(`git push`).catch(ridiculous)
   }
 ]);
-
 tasks.run().catch(err => {
   console.error("ERROR:", err);
 });
