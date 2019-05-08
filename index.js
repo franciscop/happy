@@ -52,11 +52,21 @@ const save = {
 
 const pull = {
   title: "Downloading latest version",
+  skip: async () => {
+    const status = await atocha(`git status`);
+    const updated = /Your branch is up to date with/.test(status);
+    if (updated) return true;
+  },
   task: async () => await atocha(`git pull origin master`).catch(wtf)
 };
 
 const push = {
   title: "Uploading changes",
+  skip: async () => {
+    const status = await atocha(`git status`);
+    const hasCommited = /Your branch is ahead of/.test(status);
+    if (!hasCommited) return true;
+  },
   task: async () => await atocha(`git push`).catch(wtf)
 };
 
