@@ -28,14 +28,6 @@ const cli = meow(`
 
 const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
 
-// Accept these errors
-const wtf = err => {
-  if (/branch\s+master\s+-> FETCH_HEAD/.test(err.message)) return;
-  if (/master -> master/.test(err.message)) return;
-  if (/Everything up-to-date/.test(err.message)) return;
-  throw err;
-};
-
 const save = {
   title: "Saving changes",
   skip: async () => {
@@ -57,17 +49,17 @@ const pull = {
     const updated = /Your branch is up to date with/.test(status);
     if (updated) return true;
   },
-  task: async () => await atocha(`git pull origin master`).catch(wtf)
+  task: async () => await atocha(`git pull origin master`)
 };
 
 const push = {
   title: "Uploading changes",
   skip: async () => {
     const status = await atocha(`git status`);
-    const hasCommited = /Your branch is ahead of/.test(status);
-    if (!hasCommited) return true;
+    const upToDate = /Everything up-to-date/.test(status);
+    if (upToDate) return true;
   },
-  task: async () => await atocha(`git push`).catch(wtf)
+  task: async () => await atocha(`git push`)
 };
 
 const tasks = new listr([save, pull, push]);
