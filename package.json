@@ -1,7 +1,7 @@
 {
   "name": "gitrash",
   "version": "0.3.0",
-  "description": "Just push everything",
+  "description": "Put all the local changes into production quickly",
   "main": "index.js",
   "scripts": {
     "test": "echo \"No tests! 👍\""
@@ -14,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "atocha": "^1.2.0",
-    "listr": "^0.14.3"
+    "listr": "^0.14.3",
+    "meow": "^5.0.0"
   }
 }
