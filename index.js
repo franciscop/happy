@@ -46,7 +46,8 @@ const save = {
   },
   task: async () => {
     const message = cli.input[0] || `Saved on ${time()}`;
-    return await atocha(`git commit -am "${message}"`);
+    await atocha(`git add . -A`);
+    return await atocha(`git commit -m "${message}"`);
   }
 };
 
