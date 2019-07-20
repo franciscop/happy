@@ -1,8 +1,14 @@
-import cmd from "atocha";
-import { read } from "files";
+const cmd = require("atocha");
+const { read } = require("files");
 
-export default async () => {
-  const pack = await read("package.json");
-  const { scripts } = JSON.parse(pack);
-  console.log(scripts.lint);
-};
+module.exports = cli => ({
+  title: "Linting",
+  task: async () => {
+    const pack = await read("package.json");
+    const { scripts } = JSON.parse(pack);
+    if (scripts.lint) {
+      return await cmd(scripts.lint);
+    }
+    console.log("No lint");
+  }
+});

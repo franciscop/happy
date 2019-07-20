@@ -3,7 +3,7 @@
 const atocha = require("atocha");
 const listr = require("listr");
 const meow = require("meow");
-const { pull, push, save, start } = require("./src/index.js");
+const { lint, pull, push, save, start } = require("./src/index.js");
 
 const cli = meow(`
   Usage
@@ -32,6 +32,7 @@ const cli = meow(`
 const [actionName = "start"] = cli.input;
 
 const actions = {
+  lint: [lint(cli)],
   start: [start(cli)],
   save: [save(cli), pull(cli), push(cli)]
 };
@@ -44,7 +45,6 @@ if (!action) {
     )
       .map(act => `\n$ happy ${act}`)
       .join("")}
-
 Run "happy --help" for more info`
   );
   process.exit(1);
@@ -52,11 +52,6 @@ Run "happy --help" for more info`
 
 const tasks = new listr(actions[actionName]);
 
-tasks
-  .run()
-  .then(all => {
-    console.log(all);
-  })
-  .catch(err => {
-    console.error("ERROR:", err);
-  });
+tasks.run().catch(err => {
+  console.error("ERROR:", err);
+});
