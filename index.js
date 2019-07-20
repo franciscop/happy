@@ -29,9 +29,6 @@ const cli = meow(`
     ✔ Pushing
 `);
 
-// ISO 8601 without milliseconds (which is still ISO 8601)
-const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
-
 const [actionName = "start"] = cli.input;
 
 const actions = {

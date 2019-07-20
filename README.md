@@ -1,6 +1,6 @@
 # Happy
 
-Simplify 90% of your day-to-day Git workflow:
+Happy save and don't worry about anything. Simplify your day-to-day Git workflow:
 
 ```
 happy save

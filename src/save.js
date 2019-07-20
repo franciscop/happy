@@ -1,6 +1,9 @@
 const cmd = require("atocha");
 const meow = require("meow");
 
+// ISO 8601 without milliseconds (which is still ISO 8601)
+const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
+
 module.exports = cli => ({
   title: "Saving changes",
   skip: async () => {
