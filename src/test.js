@@ -1,12 +1,12 @@
 const cmd = require("atocha");
 const { read } = require("files");
 
-let test;
+let test = "jest";
 
 module.exports = cli => ({
   title: "Testing",
   skip: async () => {
-    test = null;
+    test = "test";
     const pack = await read("package.json");
     test = JSON.parse(pack).scripts.test;
     if (!test) return "No `test` script found";
