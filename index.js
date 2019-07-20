@@ -52,6 +52,11 @@ Run "happy --help" for more info`
 
 const tasks = new listr(actions[actionName]);
 
-tasks.run().catch(err => {
-  console.error("ERROR:", err);
-});
+tasks
+  .run()
+  .then(all => {
+    console.log(all);
+  })
+  .catch(err => {
+    console.error("ERROR:", err);
+  });
