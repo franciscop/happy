@@ -9,7 +9,7 @@ module.exports = cli => ({
     linter = null;
     const pack = await read("package.json");
     linter = JSON.parse(pack).scripts.linter;
-    if (!linter) return true;
+    if (!linter) return "No linting script";
   },
   task: async () => {
     return await cmd(linter);

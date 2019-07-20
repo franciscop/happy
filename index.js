@@ -34,7 +34,8 @@ const [actionName = "start"] = cli.input;
 const actions = {
   lint: [lint(cli)],
   start: [start(cli)],
-  save: [save(cli), pull(cli), push(cli)]
+  save: [save(cli), pull(cli), push(cli)],
+  deploy: [lint(cli), save(cli), pull(cli), push(cli)]
 };
 
 const action = actions[actionName];
