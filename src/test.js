@@ -6,12 +6,14 @@ let test = "jest";
 module.exports = cli => ({
   title: "Testing",
   skip: async () => {
-    test = "test";
     const pack = await read("package.json");
-    test = JSON.parse(pack).scripts.test;
-    if (!test) return "No `test` script found";
+    test = JSON.parse(pack).scripts.test || "jest";
   },
   task: async () => {
-    return await cmd(test);
+    try {
+      return await cmd(test);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 });
