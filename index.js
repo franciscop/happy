@@ -3,7 +3,7 @@
 const atocha = require("atocha");
 const listr = require("listr");
 const meow = require("meow");
-const { lint, pull, push, save, start } = require("./src/index.js");
+const { lint, pull, push, save, start, test } = require("./src/index.js");
 
 const cli = meow(`
   Usage
@@ -35,7 +35,7 @@ const actions = {
   lint: [lint(cli)],
   start: [start(cli)],
   save: [save(cli), pull(cli), push(cli)],
-  deploy: [lint(cli), save(cli), pull(cli), push(cli)]
+  deploy: [lint(cli), test(cli), save(cli), pull(cli), push(cli)]
 };
 
 const action = actions[actionName];

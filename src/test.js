@@ -1,17 +1,17 @@
 const cmd = require("atocha");
 const { read } = require("files");
 
-let linter;
+let test;
 
 module.exports = cli => ({
   title: "Linting",
   skip: async () => {
-    linter = null;
+    test = null;
     const pack = await read("package.json");
-    linter = JSON.parse(pack).scripts.linter;
-    if (!linter) return "No `lint` script found";
+    test = JSON.parse(pack).scripts.test;
+    if (!test) return "No `test` script found";
   },
   task: async () => {
-    return await cmd(linter);
+    return await cmd(test);
   }
 });
