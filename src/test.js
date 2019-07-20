@@ -4,7 +4,7 @@ const { read } = require("files");
 let test;
 
 module.exports = cli => ({
-  title: "Linting",
+  title: "Testing",
   skip: async () => {
     test = null;
     const pack = await read("package.json");
