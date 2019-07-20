@@ -3,7 +3,6 @@
 const atocha = require("atocha");
 const listr = require("listr");
 const meow = require("meow");
-
 const { pull, push, save, start } = require("./src/index.js");
 
 const cli = meow(`
@@ -36,8 +35,8 @@ const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
 const [actionName = "start"] = cli.input;
 
 const actions = {
-  start: [start],
-  save: [save, pull, push]
+  start: [start(cli)],
+  save: [save(cli), pull(cli), push(cli)]
 };
 
 const action = actions[actionName];

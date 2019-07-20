@@ -1,7 +1,7 @@
 const cmd = require("atocha");
 const { wtf } = require("./helpers");
 
-module.exports = {
+module.exports = cli => ({
   title: "Uploading changes",
   skip: async () => {
     const status = await cmd(`git status`);
@@ -9,4 +9,4 @@ module.exports = {
     if (!hasCommited) return true;
   },
   task: async () => await cmd(`git push`).catch(wtf)
-};
+});

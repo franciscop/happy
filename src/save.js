@@ -1,8 +1,7 @@
 const cmd = require("atocha");
 const meow = require("meow");
-const cli = meow("");
 
-module.exports = {
+module.exports = cli => ({
   title: "Saving changes",
   skip: async () => {
     const status = await cmd(`git status`);
@@ -15,4 +14,4 @@ module.exports = {
     await cmd(`git add . -A`);
     return await cmd(`git commit -m "${message}"`);
   }
-};
+});
