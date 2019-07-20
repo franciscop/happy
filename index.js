@@ -4,6 +4,8 @@ const atocha = require("atocha");
 const listr = require("listr");
 const meow = require("meow");
 
+const { pull, push, save, start } = require("./src/index.js");
+
 const cli = meow(`
   Usage
     $ happy
@@ -11,16 +13,17 @@ const cli = meow(`
     $ happy save "Message here"
 
   Options
-    No available options
+    --watch   [Not yet] rerun the command when there's a file change
+    --as NAME [Not yet] save in a branch with that name
 
   Examples
-    $ happy
+    $ happy save
     ✔ Adding files
     ✔ Committing changes
     ✔ Pulling from master
     ✔ Pushing
 
-    $ happy "Fixed that damn bug that killed the staging database"
+    $ happy save "Fixed that damn bug that killed the staging database"
     ✔ Adding files
     ✔ Committing changes
     ✔ Pulling from master
@@ -30,52 +33,28 @@ const cli = meow(`
 // ISO 8601 without milliseconds (which is still ISO 8601)
 const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
 
-// Accept these errors
-const wtf = err => {
-  if (/branch\s+master\s+-> FETCH_HEAD/.test(err.message)) return;
-  if (/master -> master/.test(err.message)) return;
-  if (/Everything up-to-date/.test(err.message)) return;
-  throw err;
+const [actionName = "start"] = cli.input;
+
+const actions = {
+  start: [start],
+  save: [save, pull, push]
 };
 
-const save = {
-  title: "Saving changes",
-  skip: async () => {
-    const status = await atocha(`git status`);
-    const hasEdited = /Changes not staged for commit/.test(status);
-    const hasUncommited = /Changes to be committed/.test(status);
-    if (!hasEdited && !hasUncommited) return true;
-  },
-  task: async () => {
-    const message = cli.input[0] || `Saved on ${time()}`;
-    await atocha(`git add . -A`);
-    return await atocha(`git commit -m "${message}"`);
-  }
-};
+const action = actions[actionName];
+if (!action) {
+  console.error(
+    `No action named "${actionName}" found. Available actions are:${Object.keys(
+      actions
+    )
+      .map(act => `\n$ happy ${act}`)
+      .join("")}
 
-const pull = {
-  title: "Downloading latest version",
-  skip: async () => {
-    const status = await atocha(`git status`);
-    const ahead = /Your branch is ahead of/.test(status);
-    if (ahead) return true;
-    const updated = /Your branch is up to date with/.test(status);
-    if (updated) return true;
-  },
-  task: async () => await atocha(`git pull origin master`).catch(wtf)
-};
+Run "happy --help" for more info`
+  );
+  process.exit(1);
+}
 
-const push = {
-  title: "Uploading changes",
-  skip: async () => {
-    const status = await atocha(`git status`);
-    const hasCommited = /Your branch is ahead of/.test(status);
-    if (!hasCommited) return true;
-  },
-  task: async () => await atocha(`git push`).catch(wtf)
-};
-
-const tasks = new listr([save, pull, push]);
+const tasks = new listr(actions[actionName]);
 
 tasks.run().catch(err => {
   console.error("ERROR:", err);

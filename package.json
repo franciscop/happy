@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "start": "http-server",
     "test": "echo \"No tests! 👍\""
   },
   "bin": {
