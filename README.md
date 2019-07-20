@@ -6,7 +6,7 @@ Simplify 90% of your day-to-day Git workflow:
 happy save
 ```
 
-![Image example](./img/happy.png)
+<img width="400px" src="./img/happy.png" alt="screenshot" />
 
 Basically, does these:
 
