@@ -13,7 +13,7 @@ module.exports = cli => ({
     try {
       return await cmd(test);
     } catch (error) {
-      console.log(error.message);
+      return error.message;
     }
   }
 });
