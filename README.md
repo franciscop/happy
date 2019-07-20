@@ -1,15 +1,12 @@
-# gitrash
+# Happy
 
-Just push everything. Install it and use it:
+Simplify 90% of your day-to-day Git workflow:
 
 ```
-npm install gitrash -g
-grr
+happy save
 ```
 
-![](./img/log.png)
-
-This could easily be confused with "git trash", but since my lifehood depends on being employed I would never make that statement.
+![Image example](./img/happy.png)
 
 Basically, does these:
 

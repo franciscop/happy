@@ -6,26 +6,28 @@ const meow = require("meow");
 
 const cli = meow(`
   Usage
-    $ grr
-    $ grr "Message here"
+    $ happy
+    $ happy save
+    $ happy save "Message here"
 
   Options
     No available options
 
   Examples
-    $ grr
+    $ happy
     ✔ Adding files
     ✔ Committing changes
     ✔ Pulling from master
     ✔ Pushing
 
-    $ grr "Fixed that damn bug that killed the staging database"
+    $ happy "Fixed that damn bug that killed the staging database"
     ✔ Adding files
     ✔ Committing changes
     ✔ Pulling from master
     ✔ Pushing
 `);
 
+// ISO 8601 without milliseconds (which is still ISO 8601)
 const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
 
 // Accept these errors
