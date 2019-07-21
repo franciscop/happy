@@ -6,7 +6,7 @@ Happy save and don't worry about anything. Simplify your day-to-day Git workflow
 happy save
 ```
 
-<img width="400px" src="./img/happy.png" alt="screenshot" />
+<img width="400px" src="https://raw.githubusercontent.com/franciscop/happy/master/img/happy.png" alt="screenshot" />
 
 Basically, does these:
 

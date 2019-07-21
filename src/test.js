@@ -12,8 +12,6 @@ module.exports = cli => ({
   task: async () => {
     try {
       return await cmd(test);
-    } catch (error) {
-      return error.message;
-    }
+    } catch (e) {}
   }
 });
