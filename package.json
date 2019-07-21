@@ -1,6 +1,6 @@
 {
   "name": "happy",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Put all the local changes into production quickly",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
@@ -11,7 +11,12 @@
   "bin": {
     "happy": "index.js"
   },
-  "keywords": ["happy", "command", "cli", "git"],
+  "keywords": [
+    "happy",
+    "command",
+    "cli",
+    "git"
+  ],
   "homepage": "https://github.com/franciscop/statux#readme",
   "repository": "git@github.com:franciscop/statux.git",
   "license": "MIT",
