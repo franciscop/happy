@@ -1,6 +1,6 @@
 {
   "name": "happy",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Put all the local changes into production quickly",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
