@@ -54,7 +54,7 @@ const [actionName = "save"] = cli.input;
 const actions = {
   lint: [analyze(cli), lint(cli)],
   start: [analyze(cli), start(cli)],
-  save: [analyze(cli), save(cli), pull(cli), push(cli), publish(cli)],
+  save: [analyze(cli), save(cli), pull(cli), push(cli)],
   deploy: [analyze(cli), lint(cli), test(cli), save(cli), pull(cli), push(cli)]
 };
 
