@@ -40,4 +40,6 @@ Add a `--publish VERSION` flag to publish the current package to npm with [np](h
 happy --publish patch
 happy --publish minor
 happy --publish major
+
+happy --publish 5.0.0
 ```
