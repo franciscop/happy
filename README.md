@@ -3,7 +3,7 @@
 Happy save and don't worry about anything. Simplify your day-to-day Git workflow:
 
 ```
-happy
+happy save
 ```
 
 <img width="400px" src="https://raw.githubusercontent.com/franciscop/happy/master/img/happy.png" alt="screenshot" />
@@ -11,8 +11,25 @@ happy
 Basically, does these:
 
 ```bash
+happy save
+
+# Same as
+
 git add . -A
-git commit -m "Commited on ${time()}"
+git commit -m "Saved on ${time()}"
+git pull origin master
+git push
+```
+
+Run it with a string to use it as a commit string:
+
+```bash
+happy save "Added that new cool feature"
+
+# Same as
+
+git add . -A
+git commit -m "Added that new cool featture"
 git pull origin master
 git push
 ```
@@ -24,5 +41,3 @@ happy --publish patch
 happy --publish minor
 happy --publish major
 ```
-
-Read the `index.js`, since this is a very alpha package and will change.
