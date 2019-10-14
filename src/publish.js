@@ -12,6 +12,6 @@ module.exports = cli => ({
     return false;
   },
   task: async ctx => {
-    await cmd(`np ${cli.flags.publish} --yolo`);
+    await cmd(`np ${cli.flags.publish} --yolo --no-release-draft`);
   }
 });
