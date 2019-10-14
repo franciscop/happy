@@ -70,6 +70,10 @@ Run "happy --help" for more info`
   process.exit(1);
 }
 
+if (cli.flags.publish) {
+  action.push(publish(cli));
+}
+
 const tasks = new listr(actions[actionName]);
 
 tasks.run().catch(err => {
