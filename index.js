@@ -13,13 +13,15 @@ const {
   test
 } = require("./src/index.js");
 
-const cli = meow(`
+const cli = meow(
+  `
   Usage
     $ happy
     $ happy save
     $ happy save "Message here"
 
   Options
+    --version VERSION call "np VERSION --yolo" afterwards
     --watch   [Not yet] rerun the command when there's a file change
     --as NAME [Not yet] save in a branch with that name
 
@@ -35,9 +37,19 @@ const cli = meow(`
     ✔ Committing changes
     ✔ Pulling from master
     ✔ Pushing
-`);
+`,
+  {
+    flags: {
+      version: {
+        type: "string",
+        alias: "v"
+      }
+    }
+  }
+);
 
-const [actionName = "start"] = cli.input;
+const [actionName = "save"] = cli.input;
+console.log(cli.flags);
 
 const actions = {
   lint: [analyze(cli), lint(cli)],
@@ -48,12 +60,11 @@ const actions = {
 
 const action = actions[actionName];
 if (!action) {
+  const acts = Object.keys(actions)
+    .map(act => `\n$ happy ${act}`)
+    .join("");
   console.error(
-    `No action named "${actionName}" found. Available actions are:${Object.keys(
-      actions
-    )
-      .map(act => `\n$ happy ${act}`)
-      .join("")}
+    `No action named "${actionName}" found. Available actions are:${acts}
 Run "happy --help" for more info`
   );
   process.exit(1);
