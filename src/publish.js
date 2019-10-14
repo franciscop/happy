@@ -7,6 +7,6 @@ module.exports = cli => ({
     return !cli.flags.publish;
   },
   task: async ctx => {
-    console.log("PUBLISHING");
+    cmd(`np ${cli.flags.publish} --yolo`);
   }
 });
