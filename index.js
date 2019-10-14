@@ -21,9 +21,9 @@ const cli = meow(
     $ happy save "Message here"
 
   Options
-    --version VERSION call "np VERSION --yolo" afterwards
-    --watch   [Not yet] rerun the command when there's a file change
-    --as NAME [Not yet] save in a branch with that name
+    --publish VERSION    call "np VERSION --yolo" afterwards
+    --watch              [Not yet] rerun the command when there's a file change
+    --as NAME            [Not yet] save in a branch with that name
 
   Examples
     $ happy save
@@ -40,9 +40,9 @@ const cli = meow(
 `,
   {
     flags: {
-      version: {
+      publish: {
         type: "string",
-        alias: "v"
+        alias: "p"
       }
     }
   }
