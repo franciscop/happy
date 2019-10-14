@@ -6,6 +6,7 @@ const meow = require("meow");
 const {
   analyze,
   lint,
+  publish,
   pull,
   push,
   save,
@@ -49,13 +50,12 @@ const cli = meow(
 );
 
 const [actionName = "save"] = cli.input;
-console.log(cli.flags);
 
 const actions = {
   lint: [analyze(cli), lint(cli)],
-  start: [start(cli)],
-  save: [save(cli), pull(cli), push(cli)],
-  deploy: [lint(cli), test(cli), save(cli), pull(cli), push(cli)]
+  start: [analyze(cli), start(cli)],
+  save: [analyze(cli), save(cli), pull(cli), push(cli), publish(cli)],
+  deploy: [analyze(cli), lint(cli), test(cli), save(cli), pull(cli), push(cli)]
 };
 
 const action = actions[actionName];
