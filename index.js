@@ -18,22 +18,21 @@ const cli = meow(
   `
   Usage
     $ happy
-    $ happy save
-    $ happy save "Message here"
+    $ happy "Message here"
 
   Options
-    --publish VERSION    call "np VERSION --yolo" afterwards
-    --watch              [Not yet] rerun the command when there's a file change
+    --publish VERSION    Publish your package to NPM with "np VERSION --yolo"
     --as NAME            [Not yet] save in a branch with that name
+    --watch              [Not yet] rerun the command when there's a file change
 
   Examples
-    $ happy save
+    $ happy
     ✔ Adding files
     ✔ Committing changes
     ✔ Pulling from master
     ✔ Pushing
 
-    $ happy save "Fixed that damn bug that killed the staging database"
+    $ happy "Move the dates to ISO 8601"
     ✔ Adding files
     ✔ Committing changes
     ✔ Pulling from master
@@ -49,33 +48,12 @@ const cli = meow(
   }
 );
 
-const [actionName = "save"] = cli.input;
-
-const actions = {
-  lint: [analyze(cli), lint(cli)],
-  start: [analyze(cli), start(cli)],
-  save: [analyze(cli), save(cli), pull(cli), push(cli)],
-  deploy: [analyze(cli), lint(cli), test(cli), save(cli), pull(cli), push(cli)]
-};
-
-const action = actions[actionName];
-if (!action) {
-  const acts = Object.keys(actions)
-    .map(act => `\n$ happy ${act}`)
-    .join("");
-  console.error(
-    `No action named "${actionName}" found. Available actions are:${acts}
-Run "happy --help" for more info`
-  );
-  process.exit(1);
-}
+const action = [analyze, save, pull, push];
 
 if (cli.flags.publish) {
-  action.push(publish(cli));
+  action.push(publish);
 }
 
-const tasks = new listr(actions[actionName]);
+const tasks = new listr(action.map(task => task(cli)));
 
-tasks.run().catch(err => {
-  console.error("ERROR:", err);
-});
+tasks.run().catch(error => console.error);

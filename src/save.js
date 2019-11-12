@@ -13,7 +13,7 @@ module.exports = cli => ({
     if (!hasEdited && !hasUncommited) return true;
   },
   task: async () => {
-    const message = cli.input[1] || `Saved on ${time()}`;
+    const message = cli.input[0] || `Saved on ${time()}`;
     await cmd(`git add . -A`);
     return await cmd(`git commit -m "${message}"`);
   }

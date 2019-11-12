@@ -1,12 +1,13 @@
 {
   "name": "happy",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Put all the local changes into production quickly",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "lint": "echo \"Hello World\""
+    "lint": "echo \"Hello World\"",
+    "test": ""
   },
   "bin": {
     "happy": "index.js"
@@ -17,8 +18,8 @@
     "cli",
     "git"
   ],
-  "homepage": "https://github.com/franciscop/statux#readme",
-  "repository": "git@github.com:franciscop/statux.git",
+  "homepage": "https://github.com/franciscop/happy#readme",
+  "repository": "git@github.com:franciscop/happy.git",
   "license": "MIT",
   "dependencies": {
     "atocha": "^1.2.0",
