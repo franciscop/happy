@@ -2,8 +2,9 @@
 
 Happy save and don't worry about anything. Simplify your day-to-day Git workflow:
 
-```
-happy save
+```bash
+$ happy
+$ happy "Move the dates to ISO 8601"
 ```
 
 <img width="400px" src="https://raw.githubusercontent.com/franciscop/happy/master/img/happy.png" alt="screenshot" />
@@ -11,9 +12,9 @@ happy save
 Basically, does these:
 
 ```bash
-happy save
+happy
 
-# Same as
+# Similar to
 
 git add . -A
 git commit -m "Saved on ${time()}"
@@ -24,12 +25,12 @@ git push
 Run it with a string to use it as a commit string:
 
 ```bash
-happy save "Added that new cool feature"
+happy "Added that new cool feature"
 
-# Same as
+# Similar to
 
 git add . -A
-git commit -m "Added that new cool featture"
+git commit -m "Added that new cool feature"
 git pull origin master
 git push
 ```
