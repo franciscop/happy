@@ -5,7 +5,7 @@ const { exists, read } = require("files");
 let analysis;
 
 module.exports = cli => ({
-  title: "Analyzing Project",
+  title: "Analyzing project",
   skip: async ctx => !(await exists("package.json")),
   task: async ctx => {
     const pkg = await read("package.json");
