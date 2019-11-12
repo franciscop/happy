@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "lint": "echo \"Hello World\"",
-    "test": ""
+    "test": "npm link"
   },
   "bin": {
     "happy": "index.js"
