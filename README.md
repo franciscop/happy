@@ -90,7 +90,7 @@ happy --publish 5.0.0
 
 Upcoming flags:
 
-- `--as BRANCH`: put everything into a branch before pushing to master. Allows for the common pattern of creating PRs from branches.
+- `--as BRANCH`: put everything into a branch before pushing to origin. Allows for the common pattern of creating PRs from branches to master.
 - `--watch` (maybe): keep it in watch mode and save as you go. If combined with `--as`, keep pushing all your changes to that branch.
 - Other? Please let me know in [the issues for any feature request](https://github.com/franciscop/happy/issues).
 
