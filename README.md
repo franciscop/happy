@@ -1,6 +1,6 @@
 # Happy
 
-Happy save and don't worry about anything. Simplify your day-to-day Git workflow:
+Happy save to simplify your day-to-day git workflow:
 
 ```bash
 $ happy
@@ -9,7 +9,48 @@ $ happy "Move the dates to ISO 8601"
 
 <img width="400px" src="https://raw.githubusercontent.com/franciscop/happy/master/img/happy.png" alt="screenshot" />
 
-Basically, does these:
+## Getting started
+
+First install it globally:
+
+```bash
+npm install happy -g
+```
+
+Then you can run it in your console, either with just `happy` or with `happy "Message"`. Feel free to run `happy --help` for help:
+
+```bash
+$ happy --help
+
+  Happy save to simplify your day-to-day git workflow
+
+  Usage
+    $ happy
+    $ happy "Message here"
+
+  Options
+    --publish VERSION    Publish your package to NPM with "np VERSION --yolo"
+    --as NAME            [Not yet] save in a branch with that name
+    --watch              [Not yet] rerun the command when there's a file change
+
+  Examples
+    $ happy
+    ✔ Adding files
+    ✔ Committing changes
+    ✔ Pulling from master
+    ✔ Pushing
+
+    $ happy "Move the dates to ISO 8601"
+    ✔ Adding files
+    ✔ Committing changes
+    ✔ Pulling from master
+    ✔ Pushing
+```
+
+
+## What it does
+
+These are roughly the equivalent commands:
 
 ```bash
 happy

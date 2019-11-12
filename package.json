@@ -1,7 +1,7 @@
 {
   "name": "happy",
   "version": "0.7.0",
-  "description": "Put all the local changes into production quickly",
+  "description": "Happy save to simplify your day-to-day git workflow",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
   "type": "module",
