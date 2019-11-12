@@ -17,7 +17,7 @@ First install it globally:
 npm install happy -g
 ```
 
-Then you can run it in your console, either with just `happy` or with `happy "Message"`. Feel free to run `happy --help` for help:
+Then you can run it in your console, either with just `happy` or with `happy "Message"`. Run `happy --help` anytime:
 
 ```bash
 $ happy --help
