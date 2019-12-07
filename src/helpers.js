@@ -8,6 +8,7 @@ exports.wtf = err => {
 
 // Only throw if the error is not 0
 exports.stderrok = error => {
-  if (error.code === 0) return;
+  // 0 or undefined should be ignored
+  if (!error.code) return;
   throw error;
 };
