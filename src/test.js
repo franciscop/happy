@@ -9,6 +9,6 @@ module.exports = cli => ({
     if (!ctx.pkg.scripts.test) return true;
   },
   task: async ctx => {
-    return await cmd(ctx.pkg.scripts.test);
+    return await cmd("npm run test");
   }
 });
