@@ -8,7 +8,7 @@ module.exports = cli => ({
     const ahead = /Your branch is ahead of/.test(status);
     if (ahead) return true;
     const updated = /Your branch is up to date with/.test(status);
-    if (updated) return "Up to date";
+    if (updated) return true;
   },
   task: async () => await cmd(`git pull origin master`).catch(wtf)
 });

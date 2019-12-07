@@ -4,14 +4,11 @@ const { read } = require("files");
 let test = "jest";
 
 module.exports = cli => ({
-  title: "Testing",
-  skip: async () => {
-    const pack = await read("package.json");
-    test = JSON.parse(pack).scripts.test || "jest";
+  title: "Testing project",
+  skip: async ctx => {
+    if (!ctx.pkg.scripts.test) return true;
   },
-  task: async () => {
-    try {
-      return await cmd(test);
-    } catch (e) {}
+  task: async ctx => {
+    return await cmd(ctx.pkg.scripts.test);
   }
 });
