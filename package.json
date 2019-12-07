@@ -1,6 +1,6 @@
 {
   "name": "happy",
-  "version": "0.7.2",
+  "version": "0.8.0",
   "description": "Happy save to simplify your day-to-day git workflow",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
