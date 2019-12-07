@@ -9,6 +9,8 @@ module.exports = cli => ({
     if (!ctx.pkg.scripts.build) return true;
   },
   task: async ctx => {
-    return await cmd("npm run build");
+    try {
+      return await cmd("npm run build");
+    } catch (error) {}
   }
 });
