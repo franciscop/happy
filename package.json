@@ -4,8 +4,7 @@
   "description": "Happy save to simplify your day-to-day git workflow",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "bin": {
     "happy": "index.js"
   },
