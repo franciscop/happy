@@ -7,7 +7,7 @@ module.exports = cli => ({
     if (!ctx.pkg.scripts.lint && !ctx.pkg.scripts.linter) return true;
   },
   task: async ctx => {
-    if (!ctx.pkg.scripts.lint) {
+    if (ctx.pkg.scripts.lint) {
       return await cmd("npm run lint");
     }
     if (ctx.pkg.scripts.linter) {
