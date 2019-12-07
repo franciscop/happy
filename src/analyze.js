@@ -10,5 +10,6 @@ module.exports = cli => ({
   task: async ctx => {
     const pkg = await read("package.json");
     ctx.pkg = JSON.parse(pkg);
+    console.log(ctx.pkg);
   }
 });
