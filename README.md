@@ -35,45 +35,43 @@ $ happy --help
 
   Examples
     $ happy
-    ✔ Adding files
-    ✔ Committing changes
-    ✔ Pulling from master
-    ✔ Pushing
+    ✔ Analyzing project
+    ✔ Building project
+    ✔ Linting
+    ✔ Testing project
+    ✔ Saving changes
+    ✔ Downloading latest
+    ✔ Uploading changes
 
     $ happy "Move the dates to ISO 8601"
-    ✔ Adding files
-    ✔ Committing changes
-    ✔ Pulling from master
-    ✔ Pushing
+    ✔ Analyzing project
+    ✔ Building project
+    ✔ Linting
+    ✔ Testing project
+    ✔ Saving changes
+    ✔ Downloading latest
+    ✔ Uploading changes
 ```
 
 
 ## What it does
 
-These are roughly the equivalent commands:
+It makes sure your project is ready to deploy, and then deploy it. For this, these are the steps:
 
-```bash
-happy
+- "Analyzing project": it will read the `package.json` and gather some meta information about the current project used later.
+- "Building project": run `npm run build` *if* the `"build"` script is found in your `package.json`.
+- "Linting": run `npm run lint` *if* the `"lint"` script is found in the project `package.json`.
+- "Testing project": run `npm test` *if* the `"test"` script is found in the project `package.json`.
+- "Saving changes": add all of the files with git, equivalent to `git add . && git commit -m "Saved on $TIME"`. Provide a message for a custom git message.
+- "Downloading latest": git pull
+- "Uploading changes": git push
+- "Publish to npm": _only_ if the `--publish` flag is passed, publish it to npm.
 
-# Similar to
-
-git add . -A
-git commit -m "Saved on ${time()}"
-git pull origin master
-git push
-```
 
 Run it with a string to use it as a commit string:
 
 ```bash
 happy "Added that new cool feature"
-
-# Similar to
-
-git add . -A
-git commit -m "Added that new cool feature"
-git pull origin master
-git push
 ```
 
 Add a `--publish VERSION` flag to publish the current package to npm with [np](https://github.com/sindresorhus/np#readme):

@@ -1,8 +1,6 @@
 const cmd = require("atocha");
 const { read } = require("files");
 
-let test = "jest";
-
 module.exports = cli => ({
   title: "Testing project",
   skip: async ctx => {

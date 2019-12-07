@@ -27,16 +27,22 @@ const cli = meow(
 
   Examples
     $ happy
-    ✔ Adding files
-    ✔ Committing changes
-    ✔ Pulling from master
-    ✔ Pushing
+    ✔ Analyzing project
+    ✔ Building project
+    ✔ Linting
+    ✔ Testing project
+    ✔ Saving changes
+    ✔ Downloading latest
+    ✔ Uploading changes
 
     $ happy "Move the dates to ISO 8601"
-    ✔ Adding files
-    ✔ Committing changes
-    ✔ Pulling from master
-    ✔ Pushing
+    ✔ Analyzing project
+    ✔ Building project
+    ✔ Linting
+    ✔ Testing project
+    ✔ Saving changes
+    ✔ Downloading latest
+    ✔ Uploading changes
 `,
   {
     flags: {
