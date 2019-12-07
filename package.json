@@ -4,7 +4,6 @@
   "description": "Happy save to simplify your day-to-day git workflow",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "lint": "echo \"Hello World\"",
     "test": "npm link"
