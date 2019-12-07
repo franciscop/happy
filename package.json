@@ -5,8 +5,6 @@
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
   "scripts": {
-    "lint": "echo \"Hello World\"",
-    "test": "npm link"
   },
   "bin": {
     "happy": "index.js"
