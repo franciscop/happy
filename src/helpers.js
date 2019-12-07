@@ -5,3 +5,9 @@ exports.wtf = err => {
   if (/Everything up-to-date/.test(err.message)) return;
   throw err;
 };
+
+// Only throw if the error is not 0
+exports.stderrok = error => {
+  if (error.code === 0) return;
+  throw error;
+};

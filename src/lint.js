@@ -1,5 +1,6 @@
 const cmd = require("atocha");
 const { read } = require("files");
+const { stderrok } = require("./helpers");
 
 module.exports = cli => ({
   title: "Linting",
@@ -8,10 +9,10 @@ module.exports = cli => ({
   },
   task: async ctx => {
     if (ctx.pkg.scripts.lint) {
-      return await cmd("npm run lint");
+      return await cmd("npm run lint").catch(stderrok);
     }
     if (ctx.pkg.scripts.linter) {
-      return await cmd("npm run linter");
+      return await cmd("npm run linter").catch(stderrok);
     }
   }
 });

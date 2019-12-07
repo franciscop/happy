@@ -1,12 +1,11 @@
 const cmd = require("atocha");
 const { read } = require("files");
+const { stderrok } = require("./helpers");
 
 module.exports = cli => ({
   title: "Testing project",
   skip: async ctx => {
     if (!ctx.pkg.scripts.test) return true;
   },
-  task: async ctx => {
-    return await cmd("npm run test");
-  }
+  task: async ctx => cmd("npm run test").catch(stderrok)
 });
