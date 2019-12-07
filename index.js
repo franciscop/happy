@@ -5,6 +5,7 @@ const listr = require("listr");
 const meow = require("meow");
 const {
   analyze,
+  build,
   lint,
   publish,
   pull,
@@ -47,7 +48,7 @@ const cli = meow(
   }
 );
 
-const action = [analyze, lint, test, save, pull, push];
+const action = [analyze, build, lint, test, save, pull, push];
 
 if (cli.flags.publish) {
   action.push(publish);

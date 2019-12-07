@@ -2,7 +2,7 @@ const cmd = require("atocha");
 const { read } = require("files");
 
 module.exports = cli => ({
-  title: "Publish on npm",
+  title: "Publish to npm",
   skip: async ctx => {
     if (!cli.flags.publish) return true;
     // 5.0.0

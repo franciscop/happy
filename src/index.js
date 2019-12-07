@@ -1,4 +1,5 @@
 const analyze = require("./analyze.js");
+const build = require("./build.js");
 const lint = require("./lint.js");
 const publish = require("./publish.js");
 const pull = require("./pull.js");
@@ -7,4 +8,14 @@ const save = require("./save.js");
 const start = require("./start.js");
 const test = require("./test.js");
 
-module.exports = { analyze, lint, publish, pull, push, save, start, test };
+module.exports = {
+  analyze,
+  build,
+  lint,
+  publish,
+  pull,
+  push,
+  save,
+  start,
+  test
+};
