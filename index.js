@@ -10,7 +10,6 @@ const {
   pull,
   push,
   save,
-  start,
   test
 } = require("./src/index.js");
 
@@ -48,7 +47,7 @@ const cli = meow(
   }
 );
 
-const action = [analyze, save, pull, push];
+const action = [analyze, lint, test, save, pull, push];
 
 if (cli.flags.publish) {
   action.push(publish);
