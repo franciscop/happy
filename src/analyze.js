@@ -2,13 +2,8 @@
 const cmd = require("atocha");
 const { exists, read } = require("files");
 
-let analysis;
-
-module.exports = cli => ({
-  title: "Analyzing project",
-  skip: async ctx => !(await exists("package.json")),
-  task: async ctx => {
-    const pkg = await read("package.json");
-    ctx.pkg = JSON.parse(pkg);
-  }
-});
+module.exports = async ctx => {
+  if (!(await exists("package.json"))) return {};
+  const pkg = await read("package.json");
+  return { pkg: JSON.parse(pkg) };
+};

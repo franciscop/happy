@@ -27,7 +27,6 @@ const cli = meow(
 
   Examples
     $ happy
-    ✔ Analyzing project
     ✔ Building project
     ✔ Linting
     ✔ Testing project
@@ -36,7 +35,6 @@ const cli = meow(
     ✔ Uploading changes
 
     $ happy "Move the dates to ISO 8601"
-    ✔ Analyzing project
     ✔ Building project
     ✔ Linting
     ✔ Testing project
@@ -54,7 +52,7 @@ const cli = meow(
   }
 );
 
-const action = [analyze, build, lint, test, save, pull, push];
+const action = [build, lint, test, save, pull, push];
 
 if (cli.flags.publish) {
   action.push(publish);
@@ -62,4 +60,7 @@ if (cli.flags.publish) {
 
 const tasks = new listr(action.map(task => task(cli)));
 
-tasks.run().catch(error => console.error);
+console.log(analyze);
+analyze().then(ctx => {
+  tasks.run(ctx).catch(error => console.error(error));
+});
