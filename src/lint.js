@@ -5,6 +5,7 @@ const { stderrok } = require("./helpers");
 module.exports = cli => ({
   title: "Linting",
   skip: async ctx => {
+    if (!ctx.pkg) return true;
     if (!ctx.pkg.scripts.lint && !ctx.pkg.scripts.linter) return true;
   },
   task: async ctx => {

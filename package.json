@@ -1,7 +1,7 @@
 {
   "name": "happy",
   "version": "0.11.0",
-  "description": "Happy save to simplify your day-to-day git workflow",
+  "description": "Happy simplifies your day-to-day git workflow",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "main": "index.js",
   "scripts": {},
@@ -12,9 +12,11 @@
     "happy",
     "command",
     "cli",
-    "git"
+    "git",
+    "save",
+    "deploy"
   ],
-  "homepage": "https://github.com/franciscop/happy#readme",
+  "homepage": "https://github.com/franciscop/happy",
   "repository": "git@github.com:franciscop/happy.git",
   "license": "MIT",
   "dependencies": {
