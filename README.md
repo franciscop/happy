@@ -101,12 +101,4 @@ happy --publish 5.0.0
 Upcoming flags:
 
 - `--as BRANCH`: put everything into a branch before pushing to origin. Allows for the common pattern of creating PRs from branches to master.
-- `--watch` (maybe): keep it in watch mode and save as you go. If combined with `--as`, keep pushing all your changes to that branch.
-- Other? Please let me know in [the issues for any feature request](https://github.com/franciscop/happy/issues).
-
-Upcoming features in order of execution:
-
-- If a `"lint"` script is found in your `package.json`, run the linter specified there before saving. Errors will abort publishing.
-- If a `"test"` script is found in your `package.json`, run the test script before saving. Errors will abort publishing.
-- If a `"build"` script is found in your `package.json`, run the build scrip before saving. Errors will abort publishing.
 - Other? Please let me know in [the issues for any feature request](https://github.com/franciscop/happy/issues).
