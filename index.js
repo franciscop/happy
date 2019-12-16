@@ -56,11 +56,17 @@ const cli = meow(
   }
 );
 
-const action = [build, lint, test, save, pull, push];
+const action = [save, pull, push];
+
+if (!cli.flags.now) {
+  action.unshift(build, lint, test);
+}
 
 if (cli.flags.publish) {
   action.push(publish);
 }
+
+console.log(action);
 
 const tasks = new listr(action.map(task => task(cli)));
 

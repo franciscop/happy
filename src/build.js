@@ -7,8 +7,8 @@ let test = "jest";
 module.exports = cli => ({
   title: "Building project",
   skip: async ctx => {
-    // if (ctx.now) return "--now skips the build step";
-    if (!ctx.pkg.scripts.build) return "no build script found";
+    if (ctx.now) return true;
+    if (!ctx.pkg.scripts.build) return true;
   },
   task: async ctx => cmd("npm run build").catch(stderrok)
 });
