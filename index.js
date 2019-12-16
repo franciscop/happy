@@ -66,11 +66,8 @@ if (cli.flags.publish) {
   action.push(publish);
 }
 
-console.log(action);
-
 const tasks = new listr(action.map(task => task(cli)));
 
-console.log(cli.flags);
 analyze()
-  .then(ctx => tasks.run({ ...ctx, now: cli.flags.now }))
+  .then(ctx => tasks.run(ctx))
   .catch(error => console.error(error));
