@@ -66,5 +66,5 @@ const tasks = new listr(action.map(task => task(cli)));
 
 console.log(cli.flags);
 analyze()
-  .then(ctx => tasks.run(ctx))
+  .then(ctx => tasks.run({ ...ctx, now: cli.flags.now }))
   .catch(error => console.error(error));
