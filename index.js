@@ -22,8 +22,8 @@ const cli = meow(
 
   Options
     --publish VERSION    Publish your package to NPM with "np VERSION --yolo"
+    --now                Skip building, linting and testing to deploy it now
     --as NAME            [Not yet] save in a branch with that name
-    --watch              [Not yet] rerun the command when there's a file change
 
   Examples
     $ happy
@@ -47,6 +47,10 @@ const cli = meow(
       publish: {
         type: "string",
         alias: "p"
+      },
+      now: {
+        type: "boolean",
+        alias: "n"
       }
     }
   }
