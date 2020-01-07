@@ -35,7 +35,9 @@ $ happy --help
   Options
     --now                Skip build, lint and tests to deploy the changes *now*
     --publish VERSION    Publish your package to NPM with "np VERSION --yolo"
-    --as NAME            [Not yet] save in a branch with that name
+    --patch              Alias for --publish patch
+    --minor              Alias for --publish minor
+    --major              Alias for --publish major
 
   Examples
     $ happy
@@ -96,9 +98,12 @@ happy --publish major
 happy --publish 5.0.0
 ```
 
-## Upcoming
+As an alias, you can do with just `--patch`, `--minor` or `--major` instead:
 
-Upcoming flags:
+```bash
+happy --patch
+happy --minor
+happy --major
 
-- `--as BRANCH`: put everything into a branch before pushing to origin. Allows for the common pattern of creating PRs from branches to master.
-- Other? Please let me know in [the issues for any feature request](https://github.com/franciscop/happy/issues).
+happy --publish 5.0.0
+```

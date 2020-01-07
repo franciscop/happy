@@ -14,21 +14,23 @@ const {
   test
 } = require("./src/index.js");
 
-const cli = meow(
+const { flags, input } = meow(
   `
   Usage
     $ happy
     $ happy "Message here"
 
   Options
-    --publish VERSION    Publish your package to NPM with "np VERSION --yolo"
     --now                Skip building, linting and testing to deploy it now
-    --as NAME            [Not yet] save in a branch with that name
+    --publish VERSION    Publish your package to NPM with "np VERSION --yolo"
+    --patch              Alias for --publish patch
+    --minor              Alias for --publish minor
+    --major              Alias for --publish major
 
   Examples
     $ happy
     ✔ Building project
-    ✔ Linting
+    ↓ Linting
     ✔ Testing project
     ✔ Saving changes
     ✔ Downloading latest
@@ -36,7 +38,7 @@ const cli = meow(
 
     $ happy "Move the dates to ISO 8601"
     ✔ Building project
-    ✔ Linting
+    ↓ Linting
     ✔ Testing project
     ✔ Saving changes
     ✔ Downloading latest
@@ -44,13 +46,22 @@ const cli = meow(
 `,
   {
     flags: {
+      now: {
+        type: "boolean",
+        alias: "n"
+      },
       publish: {
         type: "string",
         alias: "p"
       },
-      now: {
-        type: "boolean",
-        alias: "n"
+      patch: {
+        type: "boolean"
+      },
+      minor: {
+        type: "boolean"
+      },
+      major: {
+        type: "boolean"
       }
     }
   }
@@ -58,15 +69,24 @@ const cli = meow(
 
 const action = [save, pull, push];
 
-if (!cli.flags.now) {
+if (!flags.now) {
   action.unshift(build, lint, test);
 }
 
-if (cli.flags.publish) {
+if (flags.patch && !flags.publish) {
+  flags.publish = "patch";
+}
+if (flags.minor && !flags.publish) {
+  flags.publish = "minor";
+}
+if (flags.major && !flags.publish) {
+  flags.publish = "major";
+}
+if (flags.publish) {
   action.push(publish);
 }
 
-const tasks = new listr(action.map(task => task(cli)));
+const tasks = new listr(action.map(task => task({ flags, input })));
 
 analyze()
   .then(ctx => tasks.run(ctx))
