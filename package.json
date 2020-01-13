@@ -3,11 +3,12 @@
   "version": "0.13.0",
   "description": "Happy simplifies your day-to-day git workflow",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
-  "main": "index.js",
+  "funding": "https://www.paypal.me/franciscopresencia/19",
+  "license": "MIT",
   "scripts": {},
-  "bin": {
-    "happy": "index.js"
-  },
+  "homepage": "https://github.com/franciscop/happy",
+  "repository": "https://github.com:franciscop/happy.git",
+  "bugs": "https://github.com/franciscop/happy/issues",
   "keywords": [
     "happy",
     "command",
@@ -16,9 +17,10 @@
     "save",
     "deploy"
   ],
-  "homepage": "https://github.com/franciscop/happy",
-  "repository": "git@github.com:franciscop/happy.git",
-  "license": "MIT",
+  "bin": {
+    "happy": "index.js"
+  },
+  "main": "index.js",
   "dependencies": {
     "atocha": "^1.2.0",
     "files": "^1.0.0",
