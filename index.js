@@ -11,7 +11,7 @@ const {
   pull,
   push,
   save,
-  test
+  test,
 } = require("./src/index.js");
 
 const { flags, input } = meow(
@@ -48,22 +48,22 @@ const { flags, input } = meow(
     flags: {
       now: {
         type: "boolean",
-        alias: "n"
+        alias: "n",
       },
       publish: {
         type: "string",
-        alias: "p"
+        alias: "p",
       },
       patch: {
-        type: "boolean"
+        type: "boolean",
       },
       minor: {
-        type: "boolean"
+        type: "boolean",
       },
       major: {
-        type: "boolean"
-      }
-    }
+        type: "boolean",
+      },
+    },
   }
 );
 
@@ -86,8 +86,8 @@ if (flags.publish) {
   action.push(publish);
 }
 
-const tasks = new listr(action.map(task => task({ flags, input })));
+const tasks = new listr(action.map((task) => task({ flags, input })));
 
 analyze()
-  .then(ctx => tasks.run(ctx))
-  .catch(error => console.error(error));
+  .then((ctx) => tasks.run(ctx))
+  .catch((error) => console.error(error));

@@ -15,5 +15,5 @@ module.exports = {
   pull,
   push,
   save,
-  test
+  test,
 };

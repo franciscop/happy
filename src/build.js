@@ -4,11 +4,11 @@ const { stderrok } = require("./helpers");
 
 let test = "jest";
 
-module.exports = cli => ({
+module.exports = (cli) => ({
   title: "Building project",
-  skip: async ctx => {
+  skip: async (ctx) => {
     if (!ctx.pkg) return true;
     if (!ctx.pkg.scripts.build) return true;
   },
-  task: async ctx => cmd("npm run build").catch(stderrok)
+  task: async (ctx) => cmd("npm run build").catch(stderrok),
 });

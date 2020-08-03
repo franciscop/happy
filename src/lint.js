@@ -2,18 +2,18 @@ const cmd = require("atocha");
 const { read } = require("files");
 const { stderrok } = require("./helpers");
 
-module.exports = cli => ({
+module.exports = (cli) => ({
   title: "Linting",
-  skip: async ctx => {
+  skip: async (ctx) => {
     if (!ctx.pkg) return true;
     if (!ctx.pkg.scripts.lint && !ctx.pkg.scripts.linter) return true;
   },
-  task: async ctx => {
+  task: async (ctx) => {
     if (ctx.pkg.scripts.lint) {
-      return await cmd("npm run lint").catch(stderrok);
+      return await cmd("cross-env CI=true npm run lint").catch(stderrok);
     }
     if (ctx.pkg.scripts.linter) {
-      return await cmd("npm run linter").catch(stderrok);
+      return await cmd("cross-env CI=true npm run linter").catch(stderrok);
     }
-  }
+  },
 });

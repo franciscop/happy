@@ -1,7 +1,7 @@
 const cmd = require("atocha");
 const { wtf } = require("./helpers");
 
-module.exports = cli => ({
+module.exports = (cli) => ({
   title: "Downloading latest",
   skip: async () => {
     const status = await cmd(`git status`);
@@ -10,5 +10,5 @@ module.exports = cli => ({
     const updated = /Your branch is up to date with/.test(status);
     if (updated) return true;
   },
-  task: async () => await cmd(`git pull origin master`).catch(wtf)
+  task: async () => await cmd(`git pull origin master`).catch(wtf),
 });
