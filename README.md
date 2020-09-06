@@ -89,9 +89,9 @@ Run the `npm run build` script *if* this script is found in your `package.json` 
 }
 ```
 
-This step will be skipped if:
+This step will be **skipped** if:
 - The script `"build"` is not found in the project `package.json`.
-- The flag `--now` was passed
+- The flag `--now` was passed.
 
 
 
@@ -107,9 +107,9 @@ Run the `npm run lint` script *if* this script is found in your `package.json` c
 }
 ```
 
-This step will be skipped if:
+This step will be **skipped** if:
 - The script `"lint"` is not found in the project `package.json`.
-- The flag `--now` was passed
+- The flag `--now` was passed.
 
 
 
@@ -127,15 +127,15 @@ Run the `npm test` script *if* this script is found in your `package.json` confi
 
 The test script will also set the environment variable CI=true to avoid [some common issues](https://stackoverflow.com/a/56917151/938236).
 
-This step will be skipped if:
+This step will be **skipped** if:
 - The script `"test"` is not found in the project `package.json`.
-- The flag `--now` was passed
+- The flag `--now` was passed.
 
 
 
 ### Saving Changes
 
-This is the equivalent of _adding_ and _commiting_ the changed files to Git. It is the main operation, so it will never be skipped. The message for the commit is the string that you pass:
+This is the equivalent of _adding_ and _commiting_ the changed files to Git. The message for the commit is the string that you pass:
 
 ```bash
 happy "Added that new cool feature"
@@ -147,13 +147,25 @@ When no string is provided, it will save the changes with a generic commit with 
 Saved on 2020-08-13T10:20:00Z
 ```
 
+This step will be **skipped** if:
+- There are no changes to add or commit.
+- The changes were already commited.
+
 
 
 ### Downloading latest
 
 Try to pull the latest changes from the remote repo to combine them locally. It will exit if there's a problem with the merge so that you can merge it manually.
 
-This step might take longer than the others since it talks to your git server. It will be skipped if there are no changes.
+> This step might take longer than the others since it talks to your git server.
+
+This step will be **skipped** if:
+- There were no changes in the remote repo (you are up to date).
+
+This step will **throw an error** if:
+- The origin is not set.
+
+> TODO: ask/fix the origin if it's not set
 
 
 
@@ -161,7 +173,10 @@ This step might take longer than the others since it talks to your git server. I
 
 Take all of your changes and upload them to the `origin` that is set in your project. This is specially useful when combined with e.g. Heroku, and you set heroku as the origin, since it will also deploy the full website.
 
-This step takes longer than the others since it's talking to your git server. It will be skipped if there are no changes.
+This step takes longer than the others since it's talking to your git server.
+
+This step will be **skipped** if:
+- There were no changes in the local repo.
 
 
 
