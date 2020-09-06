@@ -125,11 +125,11 @@ Run the `npm test` script *if* this script is found in your `package.json` confi
 }
 ```
 
+The test script will also set the environment variable CI=true to avoid [some common issues](https://stackoverflow.com/a/56917151/938236).
+
 This step will be skipped if:
 - The script `"test"` is not found in the project `package.json`.
 - The flag `--now` was passed
-
-> If your script is stuck here and you use Create React App, please [read this StackOverflow question](https://stackoverflow.com/a/56917151/938236).
 
 
 
