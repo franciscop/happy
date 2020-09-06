@@ -67,26 +67,107 @@ $ happy --help
 
 It makes sure your project is ready to deploy, and then deploy it. For this, these are the steps:
 
-- "Building project": run `npm run build` *if* the `"build"` script is found in your `package.json`.
-- "Linting": run `npm run lint` *if* the `"lint"` script is found in the project `package.json`.
-- "Testing project": run `npm test` *if* the `"test"` script is found in the project `package.json`.
-- "Saving changes": add all of the files with git, equivalent to `git add . && git commit -m "Saved on $TIME"`. Provide a message for a custom git message.
-- "Downloading latest": git pull
-- "Uploading changes": git push
-- "Publish to npm": _only_ if the `--publish` flag is passed, publish it to npm.
+- ["Building project"](#building-project): run `npm run build` *if* the `"build"` script is found in your `package.json`.
+- ["Linting"](#linting): run `npm run lint` *if* the `"lint"` script is found in the project `package.json`.
+- ["Testing project"](#testing-project): run `npm test` *if* the `"test"` script is found in the project `package.json`.
+- ["Saving changes"](#saving-changes): add all of the files with git, equivalent to `git add . && git commit -m "Saved on $TIME"`. Provide a message for a custom git message.
+- ["Downloading latest"](#downloading-latest): git pull
+- ["Uploading changes"](#uploading-changes): git push
+- ["Publish to npm"](#publish-to-npm): _only_ if the `--publish` flag is passed, publish it to npm.
 
 
-Run it with a string to use it as a commit string:
+
+### Building project
+
+Run the `npm run build` script *if* this script is found in your `package.json` configuration. Example:
+
+```json
+{
+  "scripts": {
+    "build": "rollup -c"
+  }
+}
+```
+
+This step will be skipped if:
+- The script `"build"` is not found in the project `package.json`.
+- The flag `--now` was passed
+
+
+
+### Linting
+
+Run the `npm run lint` script *if* this script is found in your `package.json` configuration. Example:
+
+```json
+{
+  "scripts": {
+    "lint": "eslint"
+  }
+}
+```
+
+This step will be skipped if:
+- The script `"lint"` is not found in the project `package.json`.
+- The flag `--now` was passed
+
+
+
+### Testing project
+
+Run the `npm test` script *if* this script is found in your `package.json` configuration. Example:
+
+```json
+{
+  "scripts": {
+    "test": "jest"
+  }
+}
+```
+
+This step will be skipped if:
+- The script `"test"` is not found in the project `package.json`.
+- The flag `--now` was passed
+
+> If your script is stuck here and you use Create React App, please [read this StackOverflow question](https://stackoverflow.com/a/56917151/938236).
+
+
+
+### Saving Changes
+
+This is the equivalent of _adding_ and _commiting_ the changed files to Git. It is the main operation, so it will never be skipped. The message for the commit is the string that you pass:
 
 ```bash
 happy "Added that new cool feature"
 ```
 
-Add a `--now` to skip building, linting and testing. It _only_ runs these if they are found, so no need for `--now` if you don't have any of these npm scripts:
+When no string is provided, it will save the changes with a generic commit with the current timestamp like:
 
-```bash
-happy --now
 ```
+Saved on 2020-08-13T10:20:00Z
+```
+
+
+
+### Downloading latest
+
+Try to pull the latest changes from the remote repo to combine them locally. It will exit if there's a problem with the merge so that you can merge it manually.
+
+This step might take longer than the others since it talks to your git server. It will be skipped if there are no changes.
+
+
+
+### Uploading changes
+
+Take all of your changes and upload them to the `origin` that is set in your project. This is specially useful when combined with e.g. Heroku, and you set heroku as the origin, since it will also deploy the full website.
+
+This step takes longer than the others since it's talking to your git server. It will be skipped if there are no changes.
+
+
+
+### Publish to npm
+
+> You need to have the library `np` installed for this, please do `npm i np -g`
 
 Add a `--publish VERSION` flag to publish the current package to npm with [np](https://github.com/sindresorhus/np#readme):
 
@@ -107,3 +188,5 @@ happy --major
 
 happy --publish 5.0.0
 ```
+
+
