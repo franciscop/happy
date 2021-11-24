@@ -9,9 +9,10 @@ module.exports = (cli) => ({
   title: "Saving changes",
   skip: async () => {
     const status = await cmd(`git status`);
-    const hasEdited = /Changes not staged for commit/.test(status);
-    const hasUncommited = /Changes to be committed/.test(status);
-    if (!hasEdited && !hasUncommited) return true;
+    const hasAdded = /untracked files present/i.test(status);
+    const hasEdited = /Changes not staged for commit/i.test(status);
+    const hasUncommited = /Changes to be committed/i.test(status);
+    if (!hasAdded && !hasEdited && !hasUncommited) return true;
   },
   task: async () => {
     const message = cli.input[0] || `Saved on ${time()}`;
