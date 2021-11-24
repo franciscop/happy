@@ -1,9 +1,11 @@
 {
   "name": "happy",
-  "version": "0.13.3",
+  "version": "0.13.4",
   "description": "Happy simplifies your day-to-day git workflow",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
-  "funding": "https://www.paypal.me/franciscopresencia/19",
+  "funding": {
+    "url": "https://www.paypal.me/franciscopresencia/19"
+  },
   "license": "MIT",
   "scripts": {},
   "homepage": "https://github.com/franciscop/happy",
