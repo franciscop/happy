@@ -83,7 +83,7 @@ if (flags.major && !flags.publish) {
   flags.publish = "major";
 }
 if (flags.publish) {
-  action.push(publish);
+  // action.push(publish);
 }
 
 const tasks = new listr(action.map((task) => task({ flags, input })));
