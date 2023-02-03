@@ -88,8 +88,6 @@ if (flags.publish) {
 
 const tasks = new listr(action.map((task) => task({ flags, input })));
 
-console.log("TASKS");
-
 analyze()
   .then((ctx) => tasks.run(ctx))
   .catch((error) => console.error(error));
