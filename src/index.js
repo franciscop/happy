@@ -1,19 +1,10 @@
-const analyze = require("./analyze.js");
-const build = require("./build.js");
-const lint = require("./lint.js");
-const publish = require("./publish.js");
-const pull = require("./pull.js");
-const push = require("./push.js");
-const save = require("./save.js");
-const test = require("./test.js");
+import analyze from "./analyze.js";
+import build from "./build.js";
+import lint from "./lint.js";
+import publish from "./publish.js";
+import pull from "./pull.js";
+import push from "./push.js";
+import save from "./save.js";
+import test from "./test.js";
 
-module.exports = {
-  analyze,
-  build,
-  lint,
-  publish,
-  pull,
-  push,
-  save,
-  test,
-};
+export { analyze, build, lint, publish, pull, push, save, test };

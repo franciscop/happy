@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-const atocha = require("atocha");
-const listr = require("listr");
-const meow = require("meow");
-const {
+import listr from "listr";
+import meow from "meow";
+import {
   analyze,
   build,
   lint,
@@ -12,7 +11,7 @@ const {
   push,
   save,
   test,
-} = require("./src/index.js");
+} from "./src/index.js";
 
 const { flags, input } = meow(
   `
@@ -45,6 +44,7 @@ const { flags, input } = meow(
     ✔ Uploading changes
 `,
   {
+    importMeta: import.meta,
     flags: {
       now: {
         type: "boolean",

@@ -1,9 +1,8 @@
-const cmd = require("atocha");
-const { read } = require("files");
+import cmd from "atocha";
 
-module.exports = (cli) => ({
+export default (cli) => ({
   title: "Publish to npm",
-  skip: async (ctx) => {
+  skip: async () => {
     if (!cli.flags.publish) return true;
     // 5.0.0
     if (!/^\d+\.\d+\.\d+$/.test(await cmd(`np --version`))) {
@@ -11,7 +10,5 @@ module.exports = (cli) => ({
     }
     return false;
   },
-  task: async (ctx) => {
-    await cmd(`np ${cli.flags.publish} --yolo --no-release-draft`);
-  },
+  task: () => cmd(`np ${cli.flags.publish} --yolo --no-release-draft`),
 });

@@ -1,10 +1,9 @@
-const cmd = require("atocha");
-const { read } = require("files");
-const { stderrok } = require("./helpers");
+import cmd from "atocha";
+import { stderrok } from "./helpers.js";
 
 const ci = "export CI=true || set CI=true&&";
 
-module.exports = (cli) => ({
+export default (cli) => ({
   title: "Linting",
   skip: async (ctx) => {
     if (!ctx.pkg) return true;

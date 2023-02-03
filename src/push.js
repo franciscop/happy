@@ -1,7 +1,7 @@
-const cmd = require("atocha");
-const { wtf } = require("./helpers");
+import cmd from "atocha";
+import { wtf } from "./helpers.js";
 
-module.exports = (cli) => ({
+export default (cli) => ({
   title: "Uploading changes",
   skip: async () => {
     const status = await cmd(`git status`);

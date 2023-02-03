@@ -1,11 +1,10 @@
-const cmd = require("atocha");
-const meow = require("meow");
-const { stderrok } = require("./helpers");
+import cmd from "atocha";
+import { stderrok } from "./helpers.js";
 
 // ISO 8601 without milliseconds (which is still ISO 8601)
 const time = () => new Date().toISOString().replace(/\.[0-9]{3}/, "");
 
-module.exports = (cli) => ({
+export default (cli) => ({
   title: "Saving changes",
   skip: async () => {
     const status = await cmd(`git status`);
