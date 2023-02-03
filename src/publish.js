@@ -10,5 +10,6 @@ export default (cli) => ({
     }
     return false;
   },
-  task: () => cmd(`np ${cli.flags.publish} --yolo --no-release-draft`),
+  task: async () =>
+    await cmd(`np ${cli.flags.publish} --yolo --no-release-draft`),
 });
