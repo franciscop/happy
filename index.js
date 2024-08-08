@@ -2,6 +2,7 @@
 
 import listr from "listr";
 import meow from "meow";
+
 import {
   analyze,
   build,
@@ -88,6 +89,12 @@ if (flags.publish) {
 
 const tasks = new listr(action.map((task) => task({ flags, input })));
 
-analyze()
-  .then((ctx) => tasks.run(ctx))
-  .catch((error) => console.error(error));
+try {
+  const ctx = await analyze();
+  await tasks.run(ctx);
+} catch (error) {
+  console.log("Failed...");
+  setTimeout(() => {
+    console.log(error.stdout?.trim?.(), "\n\n", error.message?.trim?.());
+  }, 1000);
+}

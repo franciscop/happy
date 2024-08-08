@@ -1,4 +1,5 @@
 import cmd from "atocha";
+
 import { stderrok } from "./helpers.js";
 
 const ci = "export CI=true || set CI=true&&";
@@ -9,5 +10,5 @@ export default (cli) => ({
     if (!ctx.pkg) return true;
     if (!ctx.pkg.scripts.test) return true;
   },
-  task: async (ctx) => cmd(`${ci} npm run test`).catch(stderrok),
+  task: async () => cmd(`${ci} npm run test`).catch(stderrok),
 });
