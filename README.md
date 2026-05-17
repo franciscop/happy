@@ -1,36 +1,36 @@
-# Happy
+# Travel [![travel](https://img.shields.io/npm/v/travel?label=travel&color=greenlime)](https://www.npmjs.com/package/travel)
 
-Happy simplifies your day-to-day git workflow:
+Travel simplifies your day-to-day git workflow:
 
 ```bash
-$ happy
-$ happy "Move the dates to ISO 8601"
-$ happy "Quick hot fix" --now
+$ travel
+$ travel "Move the dates to ISO 8601"
+$ travel "Quick hot fix" --now
 ```
 
 <img width="400px" src="https://raw.githubusercontent.com/franciscop/happy/master/img/happy.png" alt="screenshot" />
 
-_happy_ analyzes your project to find the appropriate npm scripts to run and then commits and deploys those changes with git.
+_travel_ analyzes your project to find the appropriate npm scripts to run and then commits and deploys those changes with git.
 
 ## Getting started
 
 First install it globally:
 
 ```bash
-npm install happy -g
+npm install travel -g
 ```
 
-Then you can run it in your console, either with just `happy` or with `happy "Message"`. Run `happy --help` anytime:
+Then you can run it in your console, either with just `travel` or with `travel "Message"`. Run `travel --help` anytime:
 
 ```bash
-$ happy --help
+$ travel --help
 
-  Happy simplifies your day-to-day git workflow.
+  Travel simplifies your day-to-day git workflow.
 
   Usage
-    $ happy
-    $ happy "Message here" --now
-    $ happy "Message here" --publish patch
+    $ travel
+    $ travel "Message here" --now
+    $ travel "Message here" --publish patch
 
   Options
     --now                Skip build, lint and tests to deploy the changes *now*
@@ -40,7 +40,7 @@ $ happy --help
     --major              Alias for --publish major
 
   Examples
-    $ happy
+    $ travel
     ✔ Building project
     ↓ Linting
     ✔ Testing project
@@ -48,7 +48,7 @@ $ happy --help
     ✔ Downloading latest
     ✔ Uploading changes
 
-    $ happy "Move the dates to ISO 8601"
+    $ travel "Move the dates to ISO 8601"
     ✔ Building project
     ↓ Linting
     ✔ Testing project
@@ -56,7 +56,7 @@ $ happy --help
     ↓ Downloading latest
     ✔ Uploading changes
 
-    $ happy --now
+    $ travel --now
     ✔ Saving changes
     ↓ Downloading latest
     ✔ Uploading changes
@@ -138,7 +138,7 @@ This step will be **skipped** if:
 This is the equivalent of _adding_ and _commiting_ the changed files to Git. The message for the commit is the string that you pass:
 
 ```bash
-happy "Added that new cool feature"
+travel "Added that new cool feature"
 ```
 
 When no string is provided, it will save the changes with a generic commit with the current timestamp like:
@@ -187,21 +187,21 @@ This step will be **skipped** if:
 Add a `--publish VERSION` flag to publish the current package to npm with [np](https://github.com/sindresorhus/np#readme):
 
 ```bash
-happy --publish patch
-happy --publish minor
-happy --publish major
+travel --publish patch
+travel --publish minor
+travel --publish major
 
-happy --publish 5.0.0
+travel --publish 5.0.0
 ```
 
 As an alias, you can do with just `--patch`, `--minor` or `--major` instead:
 
 ```bash
-happy --patch
-happy --minor
-happy --major
+travel --patch
+travel --minor
+travel --major
 
-happy --publish 5.0.0
+travel --publish 5.0.0
 ```
 
 

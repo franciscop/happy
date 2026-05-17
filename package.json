@@ -1,26 +1,22 @@
 {
-  "name": "happy",
-  "version": "1.0.2",
-  "description": "Happy simplifies your day-to-day git workflow",
+  "name": "travel",
+  "version": "0.4.0",
+  "description": "Travel simplifies your day-to-day git workflow",
+  "repository": "github:franciscop/happy",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
-  "funding": {
-    "url": "https://www.paypal.me/franciscopresencia/19"
-  },
+  "funding": "https://www.paypal.me/franciscopresencia/19",
   "license": "MIT",
-  "scripts": {},
-  "homepage": "https://github.com/franciscop/happy",
-  "repository": "https://github.com:franciscop/happy.git",
-  "bugs": "https://github.com/franciscop/happy/issues",
   "keywords": [
-    "happy",
+    "travel",
     "command",
     "cli",
     "git",
     "save",
     "deploy"
   ],
+  "scripts": {},
   "bin": {
-    "happy": "index.js"
+    "travel": "index.js"
   },
   "main": "index.js",
   "type": "module",
