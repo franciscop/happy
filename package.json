@@ -1,8 +1,9 @@
 {
   "name": "@franciscop/happy",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Travel simplifies your day-to-day git workflow",
   "repository": "github:franciscop/happy",
+  "private": false,
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "funding": "https://www.paypal.me/franciscopresencia/19",
   "license": "MIT",
