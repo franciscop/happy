@@ -1,5 +1,5 @@
 {
-  "name": "travel",
+  "name": "@franciscop/happy",
   "version": "0.4.0",
   "description": "Travel simplifies your day-to-day git workflow",
   "repository": "github:franciscop/happy",
@@ -16,7 +16,7 @@
   ],
   "scripts": {},
   "bin": {
-    "travel": "index.js"
+    "happy": "index.js"
   },
   "main": "index.js",
   "type": "module",
