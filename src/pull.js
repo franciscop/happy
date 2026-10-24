@@ -1,7 +1,7 @@
 import cmd from "atocha";
 import { wtf } from "./helpers.js";
 
-export default (cli) => ({
+export default (_cli) => ({
   title: "Downloading latest",
   skip: async () => {
     const status = await cmd(`git status`);

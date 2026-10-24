@@ -3,7 +3,7 @@ import { stderrok } from "./helpers.js";
 
 const ci = "export CI=true || set CI=true&&";
 
-export default (cli) => ({
+export default (_cli) => ({
   title: "Linting",
   skip: async (ctx) => {
     if (!ctx.pkg) return true;
