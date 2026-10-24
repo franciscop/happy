@@ -2,8 +2,8 @@
   "name": "@franciscop/happy",
   "version": "0.5.0",
   "description": "Happy simplifies your day-to-day git workflow",
-  "repository": "github:franciscop/happy",
   "private": false,
+  "repository": "github:franciscop/happy",
   "author": "Francisco Presencia <public@francisco.io> (https://francisco.io/)",
   "funding": "https://www.paypal.me/franciscopresencia/19",
   "license": "MIT",
@@ -23,6 +23,10 @@
   },
   "main": "index.js",
   "type": "module",
+  "files": [
+    "index.js",
+    "src"
+  ],
   "dependencies": {
     "atocha": "^2.0.0",
     "cross-env": "^7.0.2",
@@ -30,10 +34,6 @@
     "listr": "^0.14.3",
     "meow": "^11.0.0"
   },
-  "files": [
-    "index.js",
-    "src"
-  ],
   "devDependencies": {
     "oxlint": "^1.89.0"
   }
