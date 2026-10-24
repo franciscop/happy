@@ -1,4 +1,4 @@
-# Travel [![travel](https://img.shields.io/npm/v/travel?label=travel&color=greenlime)](https://www.npmjs.com/package/travel)
+# Travel [![npm install @franciscop/happy](https://img.shields.io/badge/npm%20install-%40franciscop%2Fhappy-blue.svg)](https://www.npmjs.com/package/@franciscop/happy)
 
 Travel simplifies your day-to-day git workflow:
 
