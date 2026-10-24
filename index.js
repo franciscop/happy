@@ -49,11 +49,11 @@ const { flags, input } = meow(
     flags: {
       now: {
         type: "boolean",
-        alias: "n",
+        shortFlag: "n",
       },
       publish: {
         type: "string",
-        alias: "p",
+        shortFlag: "p",
       },
       patch: {
         type: "boolean",
